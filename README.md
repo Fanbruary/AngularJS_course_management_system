@@ -8,7 +8,7 @@ The design idea of this system comes from 'Canvas' which in my opinion is much m
 Also, The project was fished under a group of two. Thank you Leah for your insightful design ideas and corporation.
 
 ## Development Overview
-This web-based application was developed by using HTML, CSS and Javascript in association with AngularJS frame work under the procedure of Agile development.<br/>
+This web-based single page application was developed by using HTML, CSS and Javascript in association with AngularJS frame work under the procedure of Agile development.<br/>
 Scrum board: https://trello.com/b/L6YMJlpZ/scrum-board<br/>
 Product Backlog: https://trello.com/b/CcSDf13x/product-backlog-baiwei<br/>
 
