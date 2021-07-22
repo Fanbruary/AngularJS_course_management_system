@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html ng-app="plunker">
+
+  <!-- Login page -->
+  <head>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="style.css">
+    <script data-require="angular.js@1.4.x" src="https://code.angularjs.org/1.4.12/angular.js" data-semver="1.4.9"></script>
+    <script src="app.js"></script>
+    <title>CAAB</title>
+
+  </head>
+
+  <body ng-controller="MainCtrl">
+    <div  ng-show = "showLogin">
+    <div id="content">
+     <header>
+       <h1>Course Assignment App Board</h1>
+     </header>
+
+    <!-- login error message -->
+    <div id="login-error-msg-holder">
+      <p id="login-error-msg" ng-style = "errorstyle">Invalid username <span id="error-msg-second-line">and/or password</span></p>
+    </div>
+
+     <div id="workarea">
+       <h3>Please login</h3>
+
+        <!-- user input form -->
+       <form id="login-form"> 
+         Username: <br>
+         <input type="text" ng-model="username"  placeholder="Username" class="inputarea"> 
+         <br> <br> Password: <br>
+         <input type="password" ng-model="password" placeholder="Password" class="inputarea">
+       </form>
+
+       <label>
+         <input type="checkbox" name="remember">Remember me</label>
+        <label id="forget"><a href="" target="_blank">Forget passward</a></label>
+
+       <br>
+       <br>
+
+      <!-- user login type -->
+       <div>
+         <form name="roleSelect">
+           <input type="radio" ng-model = "button_check_lec" value='1'>
+           Lecturer Login
+           <input type="radio" ng-model = "button_check_stu" value='1'>
+           Student Login
+          </form>
+       </div>
+       <br>
+
+      <!-- submit button which calls the validation function -->
+       <form >
+          <button id="loginbutton" type = "submit" ng-click = "loginValidator()">Log In</button>
+       </form>  
+
+     </div>
+    </div>
+    
+    <div id="footer">
+        <p class="f_t">
+        <a href="" target="_blank">Contact</a> |
+        <a href="">About</a> |
+        <a href="">Term</a> |
+        <a href="">Share</a> 
+         </p>
+    </div>
+
+    </div>
+  </body>
+
+  
+  <!-- Student page -->
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <title>Welcome to CAAB</title>
+  </head>
+
+  <body ng-controller="MainCtrl">
+    <div ng-show = "show_student_page">
+
+    <button id="logoutbutton" type="button" ng-click ="logOut()">
+      <a class="logbutton" href="index.html">Log Out</a>
+      </button>
+
+    <header>
+     <h1>Course Assignment App Board</h1>
+    </header>
+
+    <div id="workarea">
+      <h3>Welcome {{username}}</h3>
+      
+      <span><a class="choicearea" ng-click = "display_course_directory()"> Course directory
+        </a>
+      </span>
+
+       <br>
+
+      <span><a class="choicearea" ng-click = "display_course_offer()">
+        Course on offer
+        </a>
+      </span>
+
+       <br>
+
+      <span><a class="choicearea" ng-click = "display_my_courses_s()">
+        My courses
+        </a>
+      </span>
+
+       <br>
+      <span>
+        <a class="choicearea" ng-click = "display_to_do_list()">
+          To-Do list
+        </a>
+      </span>
+       
+    </div>
+    
+    <div id="footer">
+        <p class="f_t">
+        <a href="" target="_blank">Contact</a> |
+        <a href="">About</a> |
+        <a href="">Term</a> |
+        <a href="">Share</a> 
+         </p>
+    </div>
+
+    </div>
+  </body>
+
+
+
+
+
+
+
+
+  <!-- Lecturer page -->
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <title>Welcome to CAAB</title>
+  </head>
+
+  <body ng-controller="MainCtrl">
+    <div ng-show= "show_lecturer_page">
+
+    <button id="logoutbutton" type="button" >
+      <a class="logbutton" ng-click ="logOut()">Log Out</a>
+    </button>
+
+    <header>
+     <h1>Course Assignment App Board</h1>
+    </header>
+
+    <div id="workarea">
+      <h3>Welcome {{username}}</h3>
+      
+      <span>
+        <a class="choicearea" ng-click = "display_course_directory()">
+          Course directory
+        </a>
+      </span>
+
+       <br>
+      <span><a class="choicearea" href="" ng-click = "display_my_courses_l()">
+        My courses
+        </a>
+      </span>
+    </div>
+    
+    <div id="footer">
+        <p class="f_t">
+        <a href="" target="_blank">Contact</a> |
+        <a href="">About</a> |
+        <a href="">Term</a> |
+        <a href="">Share</a> 
+         </p>
+    </div>
+
+    </div>
+  </body>
+
+  
+   
+  <!-- Course directory page -->
+  <head>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="style.css">
+    <script data-require="angular.js@1.4.x" src="https://code.angularjs.org/1.4.12/angular.js" data-semver="1.4.9"></script>
+    <script src="app.js"></script>
+  </head>
+
+  <body ng-controller="MainCtrl">
+    <div ng-show = "show_course_directory">
+
+    <button id="logoutbutton" type="button" ng-click ="logOut()">
+      <a class="logbutton" >Log Out</a>
+    </button>
+
+    <header>
+      <h1>Course Assignment App Board</h1>
+    </header>
+
+    <h2>Course Directory</h2>
+    <button type="button" class="modifybutton">Create new course</button>
+
+    <div class="modifyarea">
+      <h4>Enter Course Detail</h4>
+
+      <div class="inputNewCourse">
+        Course ID <input type="text" ng-model="courseID_input">
+      </div>
+
+      <div class="inputNewCourse">
+        Course Name <input type="text" ng-model="course_name_input">
+      </div>
+
+      <div class="inputNewCourse">
+        Course Overview <input type="text" ng-model="course_overview_input">
+      </div>
+
+      <div class="inputNewCourse">
+        Year <input type="text" ng-model="year_input">
+      </div>
+
+      <div class="inputNewCourse">
+        Trimester <input type="text" ng-model="trimester_input">
+      </div>
+
+      <div class="inputNewCourse">
+        Lecture Times <input type="text" ng-model="lecture_time_input">
+      </div>
+
+      <div class="inputNewCourse">
+        Lecturer ID <input type="text" ng-model="lecturerID_input">
+      </div>
+      <br>
+
+      <button ng-click="postCourse()">Submit</button>
+    </div>
+
+    <table id="course_directory_table">
+      <tr>
+        <th>Course ID</th>
+        <th>Course Name</th>
+        <th>Course Overview</th>
+        <th>Year</th>
+        <th>Trimester</th>
+        <th>Lecture times</th>
+        <th>Lecturer ID</th>
+        <th>Add Course</th>
+      </tr>
+
+      <tr ng-repeat="course in course_list">
+        <td >{{ course.ID }}</td>
+        <td>{{ course.Name }}</td>
+        <td>{{ course.Overview }}</td>
+        <td>{{ course.Year }}</td>
+        <td>{{ course.Trimester }}</td>
+        <td>{{ course.LectureTimes }}</td>
+        <td>{{ course.LecturerID }}</td>
+       <td>
+         <button ng-click="addCourse(course)">Add</button>
+       </td>
+      </tr>
+    </table>
+
+    <div id="footer">
+        <p class="f_t">
+        <button ng-click = "redirectWelcome()" >WelcomePage</button> |
+        <a href="">About</a> |
+        <a href="">Term</a> |
+        <a href="">Share</a> 
+        </p>
+    </div> 
+
+    </div>
+  </body>
+  
+
+  <!--course on offer-->
+
+   <head>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <title>Course on offer</title>
+  </head>
+
+  <body ng-controller="MainCtrl">
+    <div ng-show = "show_course_on_offer">
+
+    <button id="logoutbutton" type="button" ng-click ="logOut()">
+      <a class="logbutton" href="">Log Out</a>
+    </button>
+
+    <header>
+    <h1>Course Assignment App Board</h1>
+    </header>
+
+    <h2>Courses on offer</h2>
+
+    <div class="coursearea">
+    <h4>Trimester 1</h4>
+    <ul ng-repeat="course in course_list | filter: {Trimester: '1'} ">
+      <li>{{course.ID + " " + course.Name}}</li>
+    </ul>
+
+    <h4>Trimester 2</h4>
+    <ul ng-repeat="course in course_list | filter: {Trimester: '2'} ">
+      <li>{{course.ID + " " + course.Name}}</li>
+    </ul>
+
+    <h4>Trimester 3</h4>
+    <ul ng-repeat="course in course_list | filter: {Trimester: '3'} ">
+      <li>{{course.ID + " " + course.Name}}</li>
+    </ul>
+    </div>
+  
+    <div id="footer">
+        <p class="f_t">
+        <button ng-click = "redirectWelcome()" >WelcomePage</button> |
+        <a href="">About</a> |
+        <a href="">Term</a> |
+        <a href="">Share</a> 
+        </p>
+    </div> 
+
+    </div>
+  </body>
+  
+
+  <!-- To do list for Student -->
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <title>To-Do List</title>
+  </head>
+
+  <body ng-controller = "MainCtrl">
+    <div ng-show = "show_to_do_list">
+
+    <button id="logoutbutton" type="button" ng-click ="logOut()">
+      <a href="">Log Out</a>
+      </button>
+
+    <header>
+     <h1>Course Assignment App Board</h1>
+    </header>
+
+    <h2>To-Do List</h2>
+
+    <p><button ng-click="sortTable()">Sort</button></p>
+    
+    <table id="to_do_table">
+      <tr>
+        <th>ID</th>
+        <th>Course ID</th>
+        <th>Assignment Name</th>
+        <th>Overview</th>
+        <th>Due Date</th>
+        <th>Status</th>
+      </tr>
+
+      <tr ng-repeat = "assignment in assignment_list | filter: studentAssignmentFilter">
+        <td>{{assignment.ID}}</td>
+        <td>{{assignment.CourseID}}</td>
+        <td>{{assignment.Name}}</td>
+        <td>{{assignment.Overview}}</td>
+        <td>{{assignment.DueDate}}</td>
+        <td ng-bind = "mark_completed"></td>
+      </tr>
+    </table>
+  
+    <div id="footer">
+        <p class="f_t">
+        <button ng-click = "redirectWelcome()" >WelcomePage</button> |
+        <a href="">About</a> |
+        <a href="">Term</a> |
+        <a href="">Share</a> 
+        </p>
+    </div> 
+
+    </div>
+  </body>
+  
+  <!--My courses (lecturer)-->
+  <head>
+      <link rel="stylesheet" href="style.css">
+      <script src="script.js"></script>
+      <title>My Course (lecturer)</title>
+  </head>
+
+  <body ng-controller = "MainCtrl">
+    <div ng-show = "show_my_courses_lec">
+
+    <button id="logoutbutton" type="button" ng-click ="logOut()">
+      <a class="logbutton" href="">Log Out</a>
+    </button>
+
+    <header>
+    <h1>Course Assignment App Board</h1>
+    </header>
+    <h2>My Courses (Lecturer)</h2>
+
+    <!-- ------------------------------------------------ -->
+
+    <h3>Course table</h3> 
+    <table id="course_directory_table">
+      <tr>
+        <th>Course ID</th>
+        <th>Course Name</th>
+        <th>Course Overview</th>
+        <th>Year</th>
+        <th>Trimester</th>
+        <th>Lecture times</th>
+        <th>Lecturer ID</th>
+        <th>  </th>
+        <th>  </th>
+        <th>  </th>
+      </tr>
+
+      <tr ng-repeat="course in course_list | filter:lecturerCourseFilter">
+        <td >{{ course.ID }}</td>
+        <td>{{ course.Name }}</td>
+        <td>{{ course.Overview }}</td>
+        <td>{{ course.Year }}</td>
+        <td>{{ course.Trimester }}</td>
+        <td>{{ course.LectureTimes }}</td>
+        <td>{{ course.LecturerID }}</td>
+        <td>
+         <button ng-click = "editCourse(course)">Edit</button>
+       </td>
+
+        <td>
+         <button ng-click="deleteCourse(course)">Delete</button>
+       </td>
+
+       <td>
+         <button ng-click="addAssignment(course)">Add Assignment</button>
+       </td>
+      </tr>
+    </table>
+    <!-- ------------------------------------------------ -->
+    <div ng-show = "show_add_Assignment">
+      <form>
+
+        <div class="formControl">
+          <label>Assignment ID(choose carefully)</label>
+          <input type="text" ng-model="addAssignmentID"></input>
+        </div>
+
+        <div class="formControl" id="addAssignmentBox">
+          <label>Course ID(can't edit this)</label>
+          <input type="text" ng-model="addACourseID" readonly></input>
+        </div>
+        
+        <div class="formControl">
+          <label>Assignment Name</label>
+          <input type="text" ng-model="addAssignmentName"></input>
+        </div>
+
+        <div class="formControl">
+          <label>Assignment Overview</label>
+          <input type="text" ng-model="addAssignmentOverview"></input>
+        </div>
+
+        <div class="formControl">
+          <label>DueDate</label>
+          <input type="text" ng-model="addAssinmentDueDate"></input>
+        </div>
+
+        <input type="submit" ng-click="addPostAssignment()" value="Submit"></input>
+      </form>
+    </div>
+    <!-- ------------------------------------------------ -->
+
+    <div ng-show = "show_edit_form">
+      <form>
+        <div class="formControl" id="editCourseIDBox">
+          <label>Course ID <i>(can't edit this)</i></label>
+          <!-- Course ID is set to read only, so we can't edit it -->
+          <input type="text" ng-model="editCourseID" readonly></input>
+        </div>
+        
+        <div class="formControl">
+          <label>Course Name</label>
+          <input type="text" ng-model="editCourseName"></input>
+        </div>
+
+        <div class="formControl">
+          <label>Course Overview</label>
+          <input type="text" ng-model="editCourseOverview"></input>
+        </div>
+
+        <div class="formControl">
+          <label>Course Year</label>
+          <input type="text" ng-model="editCourseYear"></input>
+        </div>
+
+        <div class="formControl">
+          <label>Course Trimester</label>
+          <input type="text" ng-model="editCourseTrimester"></input>
+        </div>
+
+        <div class="formControl">
+          <label>Course Lecture Times</label>
+          <input type="text" ng-model="editCourseLectureTimes"></input>
+        </div>
+
+        <div class="formControl">
+          <label>Course Lecturer ID</label>
+          <input type="text" ng-model="editCourseLecturerID"></input>
+        </div>
+
+        <input type="submit" ng-click="editPostCourse()" value="Submit"></input>
+      </form>
+    </div>
+
+    <!-- ------------------------------------------------ -->
+
+    <h3>Assignment table</h3>
+    <table id="course_directory_table">
+      <tr>
+        <th>ID</th>
+        <th>Course ID</th>
+        <th>Assignment Name</th>
+        <th>Overview</th>
+        <th>Due Date</th>
+        <th>  </th>
+        <th>  </th>
+      </tr>
+
+      <tr ng-repeat = "assignment in assignment_list| filter:lecturerAssignmentFilter">
+        <td>{{assignment.ID}}</td>
+        <td>{{assignment.CourseID}}</td>
+        <td>{{assignment.Name}}</td>
+        <td>{{assignment.Overview}}</td>
+        <td>{{assignment.DueDate}}</td>
+
+       <td>
+         <button ng-click = "editAssignment(assignment)">Edit</button>
+       </td>
+
+       <td>
+         <button ng-click = "deleteAssignment(assignment)">Delete</button>
+       </td>
+
+      </tr>
+    </table>
+
+    <!-- ------------------------------------------------ -->
+      <div ng-show = "show_edit_form_A">
+      <form>
+        <div class="formControl" id="editAssignmentBox">
+          <label>ID <i>(can't edit this)</i></label>
+          <!-- Assignment ID is set to read only, so we can't edit it -->
+          <input type="text" ng-model="editAssignmentID" readonly></input>
+        </div>
+
+        <div class="formControl">
+          <label>Course ID</label>
+          <input type="text" ng-model="editACourseID"></input>
+        </div>
+        
+        <div class="formControl">
+          <label>Assignment Name</label>
+          <input type="text" ng-model="editAssignmentName"></input>
+        </div>
+
+        <div class="formControl">
+          <label>Assignment Overview</label>
+          <input type="text" ng-model="editAssignmentOverview"></input>
+        </div>
+
+        <div class="formControl">
+          <label>DueDate</label>
+          <input type="text" ng-model="editAssinmentDueDate"></input>
+        </div>
+
+        <input type="submit" ng-click="editPostAssignment()" value="Submit"></input>
+      </form>
+    </div>
+
+    <!-- ------------------------------------------------ -->
+
+    <div id="footer">
+        <p class="f_t">
+        <button ng-click = "redirectWelcome()" >WelcomePage</button> |
+        <a href="">About</a> |
+        <a href="">Term</a> |
+        <a href="">Share</a> 
+        </p>
+    </div> 
+
+    </div>
+    </body>
+
+
+
+<!--My courses (Student)-->
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <title>My Course (Student)</title>
+  </head>
+
+  <body ng-controller = "MainCtrl">
+    <div ng-show = "show_my_courses_stu">
+
+    <button id="logoutbutton" type="button" ng-click ="logOut()">
+      <a class="logbutton" href="">Log Out</a>
+    </button>
+
+    <header>
+    <h1>Course Assignment App Board</h1>
+    </header>
+
+    <h2>My Courses (Student)</h2>
+    <h3>Course table</h3> 
+
+    <table id="course_directory_table">
+      <tr>
+        <th>Course ID</th>
+        <th>Course Name</th>
+        <th>Course Overview</th>
+        <th>Year</th>
+        <th>Trimester</th>
+        <th>Lecture times</th>
+        <th>Lecturer ID</th>
+        <th>  </th>
+      </tr>
+
+      <tr ng-repeat="course in course_list | filter:studentCourseFilter">
+        <td >{{ course.ID }}</td>
+        <td>{{ course.Name }}</td>
+        <td>{{ course.Overview }}</td>
+        <td>{{ course.Year }}</td>
+        <td>{{ course.Trimester }}</td>
+        <td>{{ course.LectureTimes }}</td>
+        <td>{{ course.LecturerID }}</td>
+        <td>
+         <button ng-click="removeCourse(course)">Delete</button>
+        </td>
+      </tr>
+    </table>
+
+    <h3>Assignment table</h3>
+    <button ng-click="completeAssignment()">Mark assignments completed
+    </button>
+    <button ng-click="uncompleteAssignment()">Unmark assignments completed</button>
+
+    <table id="course_directory_table">
+      <tr>
+        <th>ID</th>
+        <th>Course ID</th>
+        <th>Assignment Name</th>
+        <th>Overview</th>
+        <th>Due Date</th>
+        <th>Status</th>
+      </tr>
+
+      <tr ng-repeat = "assignment in assignment_list| filter:studentAssignmentFilter">
+        <td>{{assignment.ID}}</td>
+        <td>{{assignment.CourseID}}</td>
+        <td>{{assignment.Name}}</td>
+        <td>{{assignment.Overview}}</td>
+        <td>{{assignment.DueDate}}</td>
+        <td ng-bind = "mark_completed"></td>
+      </tr>
+    </table>
+
+    <div id="footer">
+        <p class="f_t">
+        <button ng-click = "redirectWelcome()" >WelcomePage</button> |
+        <a href="">About</a> |
+        <a href="">Term</a> |
+        <a href="">Share</a> 
+        </p>
+    </div> 
+
+    </div>
+  </body>
+
+
+</html>

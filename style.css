@@ -1,0 +1,309 @@
+html, body{
+  height:100%;
+  width:100%;
+  font-weight:normal;
+  min-width:500px;
+  font-family: "Comic Sans MS";
+}
+body{
+  background-color:rgba(194, 220, 243, 0.459);
+}
+
+header{
+  font-size:1em;
+  font-family:"ink free";
+  text-align:center;
+  min-height:100px;
+  overflow:hidden;
+  padding-left:30px;
+  padding-top:50px;
+}
+
+h3{
+  padding-top: 50px;
+  padding-left:50px;
+}
+
+#login-error-msg-holder {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}
+
+#login-error-msg {
+  width: 23%;
+  text-align: center;
+  margin: 0;
+  padding: 5px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #8a0000;
+  border: 1px solid #8a0000;
+  background-color: #e58f8f;
+  opacity: 0;
+}
+
+
+#loginbutton{
+  border: none;
+  background-color:rgb(137, 203, 230);
+  width: auto;
+  height: 30px;
+  margin-left:90px;
+  padding-top:4px;
+  padding-right: 20px;
+  padding-bottom: 6px;
+  padding-left: 20px;
+  border-radius:5px;
+  cursor:pointer;
+  margin-bottom:8px;
+  font-weight: bold;
+  font-family: "Comic Sans MS";
+}
+a.logbutton:link {
+  color:black;
+  text-decoration:none;
+}
+a.logbutton:hover{
+  color:white;
+}
+.inputarea{
+  padding-right:100px;
+}
+#workarea{
+  display:block;
+  font-size:normal;
+  font-weight:normal;
+  font-family: "Comic Sans MS";
+  width: 350px;
+  margin:auto;
+  padding-left:80px;
+  padding-bottom:50px;
+  border:2px solid rgba(71, 143, 226, 0.774);
+  background-color:white;
+  border-radius:10px;
+}
+label{
+  font-size:0.7em;
+}
+label#forget{
+  padding-left:80px;
+  text-decoration:underline;
+}
+
+a.choicearea:link {
+  color:black;
+  text-decoration:none;
+}
+a.choicearea:hover {
+  color:black;
+  background-color:gainsboro;
+}
+
+.choicearea{
+  border: none;
+  background-color:rgba(137, 204, 230, 0.781);
+  width: 250px;
+  height: 30px;
+  padding-top:4px;
+  padding-right: 20px;
+  padding-bottom: 6px;
+  border-radius:5px;
+  cursor:pointer;
+  margin-bottom:8px;
+  text-align: center;
+  font-size: 16px;
+  display: block;
+}
+
+#logoutbutton{
+  border: none;
+  background-color:rgb(137, 203, 230);
+  width: auto;
+  height: 20px;
+  float:right;
+  margin-top:20px;
+  margin-right:100px;
+  padding-top:4px;
+  padding-right: 10px;
+  padding-bottom: 6px;
+  padding-left: 10px;
+  border-radius:5px;
+  cursor:pointer;
+  text-decoration:none;
+  font-weight: bold;
+}
+
+h2{
+  font-family:"Comic Sans MS";
+  border-left:3px solid rgba(71, 143, 226, 0.774);
+  padding-left:5px;
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  background-color:white;
+  margin-left:5px;
+  
+}
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+button{
+  color:black;
+  cursor:pointer;
+  border-radius:5px;
+}
+
+#footer {
+    width: 100%;
+    margin-top:100px;
+    padding: 5px 0;
+    text-align: center;
+    color: black;
+    line-height: 25px;
+    z-index: 0;
+    background-color:rgba(8, 121, 250, 0.219);
+}
+.f_t{
+  word-spacing: 30px;
+}
+
+.f_t a {
+  color:black;
+  text-decoration:none;
+}
+
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.closebutton {
+  float: right;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.containerTab {
+  margin-top:10px;
+  padding: 20px;
+  color: white;
+}
+
+.coursearea{
+  background-image: linear-gradient(to right , rgb(202, 225, 247), white);
+  text-indent:15px;
+  border-radius:5px;
+  width:auto;
+  padding-top:20px;
+  padding-bottom:20px;
+  margin-top:30px;
+  margin-bottom:30px;
+}
+.coursebutton{
+  border: none;
+  background-color:rgba(8, 121, 250, 0.5);
+  width: auto;
+  height: 30px;
+  padding:4px 20px 6px 20px;
+  border-radius:5px;
+  cursor:pointer;
+}
+#course_directory_table{
+  margin-top:20px;
+}
+
+.modifybutton {
+  background-color:rgba(105, 172, 228, 0.781);
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+
+.active, .modifybutton:hover {
+  background-color: rgb(48, 122, 192);
+}
+
+.modifyarea {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+.modifyarea{
+  padding-left:50px;
+  padding-bottom:50px;
+  border:2px solid rgba(71, 143, 226, 0.774);
+  background-color:white;
+  border-radius:10px;
+}
+.newcoursearea, .editcoursearea {
+  margin-top:20px;
+  padding-left:20px;
+  padding-bottom:50px;
+  border:2px solid rgba(71, 143, 226, 0.774);
+  background-color:white;
+  border-radius:10px;
+}
+.inputnewcourse, .editcourse, .editAssignment{
+  padding:5px;
+}
+.deletebutton, .completebutton{
+  float:right;
+  margin:20px;
+}
+.editbutton, .addbutton{
+  margin:20px;
+}
+.assignmentarea{
+  border-top:1px dashed rgba(71, 143, 226, 0.774);
+  border-bottom:1px dashed rgba(71, 143, 226, 0.774);
+}
+.formControl{
+  width: 400px;
+  margin: 20px;
+  padding: 8px;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: 2px 2px grey;
+}
+
+.formControl input{
+  width: 50%;
+  float: right;
+}
+
+#editCourseIDBox{
+  background-color: lightgray;
+}
+
+#addAssignmentBox{
+  background-color: lightgray;
+}
+
+#editAssignmentBox{
+  background-color: lightgray;
+}
+
